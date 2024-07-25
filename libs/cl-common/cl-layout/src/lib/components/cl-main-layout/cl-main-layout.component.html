@@ -2,8 +2,9 @@
   <button mat-icon-button (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>
-  <span class="title"><ng-content select="[header]" /></span>
-  <!-- <span class="spacer"></span> -->
+  <span class="title">
+    <ng-content select="[header]" />
+  </span>
   <button mat-icon-button [matMenuTriggerFor]="profileMenu">
     <mat-icon>account_circle</mat-icon>
   </button>
@@ -39,13 +40,8 @@
         <span *ngIf="isExpanded" class="nav-text">Express Builder</span>
       </a>
     </mat-nav-list>
-    <div class="toggle-button-container">
-      <span (click)="toggleSidenav()">
-        {{ isExpanded ? '>>' : '<<' }}
-      </span>
-    </div>
-    
-
+    <div class="toggle-button-container" (click)="toggleSidenav()">
+      {{ isExpanded ? '>>' : '<<' }} </div>
   </mat-sidenav>
 
   <mat-sidenav-content class="content" [ngClass]="{'content-expanded': isExpanded, 'content-collapsed': !isExpanded}">

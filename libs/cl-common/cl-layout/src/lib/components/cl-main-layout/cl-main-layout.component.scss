@@ -6,7 +6,9 @@
 
 .header {
   height: 4vh;
+  display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .container {
@@ -18,11 +20,16 @@
 .sidenav {
   background-color: #fafafa;
   font-size: 20px;
+
+  &.collapsed {
+    width: 50px;
+  }
 }
 
 .content {
   flex: 1;
   padding: 16px;
+
   &.content-expanded {
     margin-left: 200px !important;
   }
@@ -43,12 +50,11 @@
 .small-icon {
   font-size: 16px;
   vertical-align: middle;
-  font-weight: bold;
 }
 
 .toggle-button-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -61,6 +67,8 @@
 
 .footer {
   height: 3vh;
+  display: flex;
   justify-content: center;
+  align-items: center;
   font-weight: bold;
 }
