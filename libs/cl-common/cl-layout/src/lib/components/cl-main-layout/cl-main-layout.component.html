@@ -1,0 +1,58 @@
+<mat-toolbar color="primary" class="header">
+  <button mat-icon-button (click)="toggleSidenav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="title"><ng-content select="[header]" /></span>
+  <!-- <span class="spacer"></span> -->
+  <button mat-icon-button [matMenuTriggerFor]="profileMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>account_box</mat-icon>
+      <span>Profile</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="true" [class.collapsed]="!isExpanded">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">
+        <mat-icon class="small-icon">home</mat-icon>
+        <span *ngIf="isExpanded" class="nav-text">Home</span>
+      </a>
+      <a mat-list-item routerLink="/about">
+        <mat-icon class="small-icon">info</mat-icon>
+        <span *ngIf="isExpanded" class="nav-text">About</span>
+      </a>
+      <a mat-list-item routerLink="/contact">
+        <mat-icon class="small-icon">contacts</mat-icon>
+        <span *ngIf="isExpanded" class="nav-text">Contact</span>
+      </a>
+      <a mat-list-item routerLink="/express-builder">
+        <mat-icon class="small-icon">build</mat-icon>
+        <span *ngIf="isExpanded" class="nav-text">Express Builder</span>
+      </a>
+    </mat-nav-list>
+    <div class="toggle-button-container">
+      <span class="small-icon small-icon-bold" (click)="toggleSidenav()">
+        {{ isExpanded ? '>>' : '<<' }}
+      </span>
+    </div>
+    
+
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content" [ngClass]="{'content-expanded': isExpanded, 'content-collapsed': !isExpanded}">
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<mat-toolbar color="primary" class="footer">
+  <span>&copy; {{ currentYear }} My Company. All rights reserved.</span>
+</mat-toolbar>

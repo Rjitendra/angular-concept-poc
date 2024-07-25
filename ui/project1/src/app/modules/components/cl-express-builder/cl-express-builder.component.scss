@@ -1,0 +1,71 @@
+/* styles.css or your component-specific CSS file */
+
+/* General card styling */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 15px;
+    background-color: #fff;
+  }
+  
+  /* Card header styling */
+  .card-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .card-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  .card-header h3 {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  /* Conditional class for invalid expression */
+  .card-header .red {
+    color: red;
+  }
+  
+  /* Card content styling */
+  .card-content {
+    padding: 10px 0;
+  }
+  
+  /* Card actions styling */
+  .card-actions {
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+    margin-top: 15px;
+    text-align: right;
+  }
+  
+  .card-actions button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .card-actions button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  
+  pre {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+  }
+  

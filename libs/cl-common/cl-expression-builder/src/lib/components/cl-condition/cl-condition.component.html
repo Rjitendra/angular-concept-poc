@@ -1,0 +1,78 @@
+<div class="container">
+  <mat-form-field appearance="fill" class="field-control">
+    <cl-field-select #fieldSelector [formControl]="field" [allFields]="allFields" />
+    <button *ngIf="field.value" mat-button matSuffix (click)="fieldSelector.clear()">
+      <mat-icon matSuffix>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <mat-form-field class="space-left" appearance="fill">
+    <mat-label>Condition</mat-label>
+    <mat-select [formControl]="condition">
+      <mat-option *ngFor="let option of operators; trackBy: trackByFn" [value]="option.value">
+        <span [attr.title]="option.label">{{ option.label }}</span>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-container [ngSwitch]="valueControl()">
+    <ng-container *ngSwitchCase="'options'">
+      <mat-form-field class="space-left" floatLabel="auto">
+        <mat-label>Options</mat-label>
+        <mat-select [formControl]="value">
+          <mat-option *ngFor="let option of fieldOptions.values; trackBy: trackByFn" [value]="option.value">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'date'">
+      <mat-form-field class="space-left" floatLabel="auto">
+        <input matInput placeholder="Choose a date" [formControl]="value" [matDatepicker]="picker" />
+        <mat-datepicker-toggle matSuffix [for]="picker" />
+        <mat-datepicker #picker />
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'text'">
+      <mat-form-field class="space-left" floatLabel="auto">
+        <input matInput placeholder="Value" [formControl]="value" />
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'number'">
+      <mat-form-field class="space-left" floatLabel="auto">
+        <input matInput placeholder="Value" [formControl]="value" />
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'bool'">
+      <mat-form-field class="space-left" floatLabel="auto">
+        <input matInput placeholder="Value" [formControl]="value" />
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'lookup'">
+      <mat-form-field floatLabel="auto" class="field-control space-left">
+        <input #lookupinput matInput placeholder="Value" [matAutocomplete]="auto" [formControl]="value" />
+        <button *ngIf="value.value && !lookupService?.loading" mat-button matSuffix (click)="clearLookup()">
+          <mat-icon matSuffix>close</mat-icon>
+        </button>
+        <mat-spinner *ngIf="lookupService?.loading" matSuffix mode="indeterminate" diameter="17" />
+      </mat-form-field>
+
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="lookupDisplay">
+        <mat-option *ngFor="let option of lookupService?.data | async; trackBy: trackByFn" [value]="option">
+          <span [title]="getOptionValue(option, fieldOptions.lookup?.textField!)">
+            {{ getOptionValue(option, fieldOptions.lookup?.textField!) }}
+          </span>
+        </mat-option>
+      </mat-autocomplete>
+    </ng-container>
+  </ng-container>
+
+  <button mat-icon-button class="action space-left remove-button" aria-label="Clear Button" (click)="removeCondition()">
+    <mat-icon>delete_outline</mat-icon>
+  </button>
+</div>
