@@ -1,115 +1,66 @@
 :host {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-   
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 .header {
-    height: 4vh;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 4vh;
+  justify-content: space-between;
 }
 
-/* .spacer {
-    flex: 1;
-} */
-
 .container {
-    display: flex;
-    flex: 1;
-    overflow: hidden;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
 }
 
 .sidenav {
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: width 0.3s;
-    background-color: #fafafa;
-
-}
-
-.sidenav.collapsed {
-    width: 50px;
-
-}
-
-.expand-collapse-button {
-    margin: 10px;
-    align-self: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-
-.expand-collapse-button mat-icon {
-    font-size: 20px;
+  background-color: #fafafa;
+  font-size: 20px;
 }
 
 .content {
-    flex: 1;
-    padding: 16px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
+  flex: 1;
+  padding: 16px;
+  &.content-expanded {
+    margin-left: 200px !important;
   }
 
+  &.content-collapsed {
+    margin-left: 50px !important;
+  }
+}
+
 .nav-text {
-    display: inline-block;
-    margin-left: 8px;
-    /* Adjust spacing between icon and text */
-    font-size: 13px;
-    color: black;
-    font-weight: 500;
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 13px;
+  color: black;
+  font-weight: 500;
 }
 
 .small-icon {
-    font-size: 16px;
-    /* Set the desired size for the icons */
-    vertical-align: middle;
+  font-size: 16px;
+  vertical-align: middle;
+  font-weight: bold;
 }
 
-.expand-collapse-button .small-icon {
-    font-size: 20px;
-    /* Adjust the size of the icon inside the button */
-}
 .toggle-button-container {
-    display: flex;
-    justify-content: end;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding-bottom: 1px; /* Optional: Adjust as needed */
-    background: white; /* Optional: Add background to ensure visibility */
-    cursor: pointer;
-  }
+  display: flex;
+  justify-content: end;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 1px;
+  cursor: pointer;
+  font-size: 16px;
+  vertical-align: middle;
+  font-weight: bold;
+}
 
 .footer {
-    height: 3vh;
-    /* Adjust based on footer height */
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+  height: 3vh;
+  justify-content: center;
+  font-weight: bold;
 }
-.content-expanded {
-    margin-left: 200px;
-  }
-  
-  .content-collapsed {
-    margin-left: 50px;
-  }
-  .small-icon-bold {
-    font-weight: bold;
-  }
-  
